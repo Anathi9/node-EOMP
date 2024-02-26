@@ -1,0 +1,1 @@
+import {connection as db} from "../Config/index.js"
