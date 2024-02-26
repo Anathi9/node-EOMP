@@ -1,5 +1,4 @@
 import {connection as db} from "../Config/index.js"
-import {connection as db} from "../Config/index.js"
 class Products{
     fetchProducts(req, res){
         const qry = `
@@ -18,7 +17,7 @@ class Products{
     fetchProduct(req, res){
         const qry = `
         SELECT prodID, prodName,quantity,
-        amount, Categoty,prdUrl
+        amount, Category,prodUrl
         FROM Products
         WHERE prodID = ${req.params.id};
         `
@@ -74,3 +73,4 @@ class Products{
 export {
     Products
 }
+//console.log(await updateProduct(1,'uluso'))
