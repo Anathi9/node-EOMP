@@ -8,7 +8,7 @@ function createToken(user){
     }, 
     process.env.SECRET_KEY,
     {
-        expiresIn: '1h'
+        expiresIn: '2h'
     }
     )
 }
@@ -22,7 +22,7 @@ function verifyAToken(req, res, next) {
         }else {
             res?.json({
                 status: res.statusCode,
-                msg: "Please provide the correct credentials."
+                msg: "Please provide the accurate login information."
             })
         }
     }else {
