@@ -11,7 +11,7 @@ userRouter.get('/', (req, res)=>{
     }catch(e) {
         res.json({
             status: res.statusCode, 
-            msg: 'Failed to retrieve users'
+            msg: 'Unable to fetch users'
         })
     }
 })
@@ -22,7 +22,7 @@ userRouter.get('/:id', (req, res)=>{
     }catch(e) {
         res.json({
             status: res.statusCode,
-            msg: 'Failed to retrieve a user'
+            msg: 'Unable to fetch a user'
         })
     }
 })
@@ -33,7 +33,7 @@ userRouter.post('/register', bodyParser.json(), (req, res)=>{
     }catch(e) {
         res.json({
             status: res.statusCode,
-            msg: 'Failed to add a new user.'
+            msg: 'Unable to add a new user.'
         }) 
     }
 })
@@ -44,7 +44,7 @@ userRouter.patch('/update/:id', bodyParser.json(),
     }catch(e) {
         res.json({
             status: res.statusCode, 
-            msg: "Failed to update a user"
+            msg: "Unable to update a user"
         })
     }
 })
@@ -54,7 +54,7 @@ userRouter.delete('/delete/:id', (req, res)=>{
     }catch(e) {
         res.json({
             status: res.statusCode,
-            msg: "Failed to delete a user."
+            msg: "Unable to delete a user."
         })
     }
     

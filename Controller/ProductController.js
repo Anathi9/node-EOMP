@@ -10,7 +10,7 @@ productRouter.get('/', (req, res)=>{
     }catch(e) {
         res.json({
             status: res.statusCode,
-            msg: 'Failed to retrieve products'
+            msg: 'Unable to fetch products'
         })
     }
 })
@@ -20,7 +20,7 @@ productRouter.get('/:id', (req, res)=>{
     }catch(e) {
         res.json({
             status: res.statusCode,
-            msg: 'Failed to retrieve a product'
+            msg: 'Unable to fetch a product'
         })
     }
 })
@@ -30,7 +30,7 @@ productRouter.post('/addProduct', bodyParser.json(), (req, res)=>{
     }catch(e) {
         res.json({
             status: res.statusCode,
-            msg: 'Failed to add a new product.'
+            msg: 'Unable to add a new product.'
         })
     }
 })
@@ -40,7 +40,7 @@ productRouter.patch('/update/:id', bodyParser.json(), (req, res)=>{
     }catch(e) {
         res.json({
             status: res.statusCode,
-            msg: "Failed to update a product."
+            msg: "Unable to update a product."
         })
     }
 })
@@ -50,7 +50,7 @@ productRouter.delete('/delete/:id', (req, res)=>{
     }catch(e) {
         res.json({
             status: res.statusCode,
-            msg: "Failed to delete a product."
+            msg: "Unable to delete a product."
         })
     }
 })
