@@ -14,19 +14,19 @@
             <router-link :to="'/about'" class="nav-link text-light">About</router-link>
           </li>
           <li  class="nav-item">
-            <router-link :to="'/'" class="nav-link text-light">Products</router-link>
+            <router-link :to="'/products'" class="nav-link text-light">Products</router-link>
           </li>
           <li  class="nav-item">
             <router-link :to="'/admin'" class="nav-link text-light">Admin</router-link>
           </li>
           <li  class="nav-item">
-            <router-link :to="'/'" class="nav-link text-light">Contact</router-link>
+            <router-link :to="'/contact'" class="nav-link text-light">Contact</router-link>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <router-view/>
+  <!-- <router-view/> -->
 </template>
 
 
