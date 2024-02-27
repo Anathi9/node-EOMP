@@ -10,10 +10,10 @@ class Products{
             if(err) throw err 
             res.json({
                 status: res.statusCode,
-                results
+                results: results
             })
         })
-    }
+    }    
     fetchProduct(req, res){
         const qry = `
         SELECT prodID, prodName,quantity,

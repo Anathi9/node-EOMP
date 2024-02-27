@@ -1,26 +1,27 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import { products } from '../model/index.js'
+import { verifyAToken } from '../Middleware/AuthenticateUser.js'
 const productRouter = express.Router()
 
 // Fetch all products
-productRouter.get('/', (req, res)=>{
+productRouter.get('/',verifyAToken, (req, res)=>{
     try{
         products.fetchProducts(req, res)
     }catch(e) {
         res.json({
             status: res.statusCode,
-            msg: 'Unable to fetch products'
+            msg: 'Unable to retrieve products'
         })
     }
 })
-productRouter.get('/:id', (req, res)=>{
+productRouter.get('/:id',verifyAToken, (req, res)=>{
     try{
         products.fetchProduct(req, res)
     }catch(e) {
         res.json({
-            status: res.statusCode,
-            msg: 'Unable to fetch a product'
+            status: res.statusCode,  
+            msg: 'Unable to retrieve a product'
         })
     }
 })
@@ -40,7 +41,7 @@ productRouter.patch('/update/:id', bodyParser.json(), (req, res)=>{
     }catch(e) {
         res.json({
             status: res.statusCode,
-            msg: "Unable to update a product."
+            msg: "Failed to update a product."
         })
     }
 })
@@ -50,7 +51,7 @@ productRouter.delete('/delete/:id', (req, res)=>{
     }catch(e) {
         res.json({
             status: res.statusCode,
-            msg: "Unable to delete a product."
+            msg: "Failed to delete a product."
         })
     }
 })
