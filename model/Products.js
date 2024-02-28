@@ -11,6 +11,7 @@ class Products{
             res.json({
                 status: res.statusCode,
                 results: results
+    
             })
         })
     }    
