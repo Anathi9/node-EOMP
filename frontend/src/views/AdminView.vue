@@ -1,46 +1,40 @@
 <template>
-  <div class="container">
-      <div class="row">
-          <h2 class="display-4">Users</h2>
-      </div>
-      <div class="row">
-          <div class="col">
-              <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="">Add </button>
-          </div>
-      </div>
-      <div class="row">
-          <table>
-              <thead>
-                  <tr>
-                      <th>User ID</th>
-                      <th>First name</th>
-                      <th>Last name</th>
-                      <th>User age</th>
-                      <th>Gender</th>
-                      <th>Email address</th>
-                      <th>User role</th>
-                      <th>
-                          Action
-                      </th>
-                  </tr>
-              </thead>
-              <tbody v-if="users">
-                  <tr v-for="user in users" :key="user.userID">
-                      <td>
-                          {{ user.userID }}
-                      </td>
-                      <td>
-                          {{ user.firstName }}
-                      </td>
-                      <td>
-                          {{ user.lastName }}
-                      </td>
-                      <td>
-                          {{ user.userAge }}
-                      </td>
+  <h1 class="display-3"> Users</h1>
+      
+  <div class="table-container">
+
+      
+      <table class="table table-dark table-striped" >
+        <thead>
+            <tr>
+            <th scope="col">User ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">LastName </th>
+            <th scope="col">User age</th>
+            <th scope="col">Gender </th>
+            <th scope="col">Email Address</th>
+            <th scope="col">User role</th>
+            <th scope="col">#</th>
+          </tr>
+        </thead>
+    <tbody v-for="user in users" :key="user.userID">
+    <tr>
+      <!-- <th scope="row"></th> -->
+      <td>
+          {{ user.userID }}
+        </td>
+        <td>
+            {{ user.firstName }}
+        </td>
+        <td>
+            {{ user.lastName }}
+        </td>
+        <td>
+            {{ user.userAge }}
+        </td>
                       <td>
                           {{ user.gender }}
-                      </td>
+                        </td>
                       <td>
                           {{ user.emailAdd }}
                       </td>
@@ -50,60 +44,44 @@
                         <td><img src="https://i.ibb.co/94g6875/bin.png" alt="Delete"  width="30" height="30"></td>
       <td><img src="https://i.ibb.co/JxK7ptg/product-design.png" alt="Edit" width="30" height="30" data-bs-toggle="modal" data-bs-target="#editModal"></td>
       
-                      
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-      <div class="row">
-          <h2 class="display-4">Products</h2>
-      </div>
-      <div class="row">
-          <div class="col">
-              <button class="btn btn-success">Add </button>
-          </div>
-      </div>
-      <div class="row">
-          <table>
-              <thead>
-                  <tr>
-                      <th>Product ID</th>
-                      <th>Product Name</th>
-                      <th>Product Quantity</th>
-                      <th>Product Amount</th>
-                      <th>Product Category</th>
-                      <th>Product produrl</th>
-                      <th>
-                          Action
-                      </th>
-                  </tr>
-              </thead>
-              <tbody v-if="products">
-                  <tr v-for="product in products" :key="product.prodID">
-                      <td>
-                          {{ product.prodID }}
-                      </td>
-                      <td>
-                          {{ product.prodName }}
-                      </td>
-                      <td>
-                          {{ product.quantity }}
-                      </td>
-                      <td>
-                          R {{ product.amount }}
-                      </td>
-                      <td>
-                          {{ product.Category }}
-                      </td>
-                      <td><img :src="product.prodUrl" width="100px" height="100px"></td>
-      <td><img src="https://i.ibb.co/94g6875/bin.png" alt="Delete"  width="30" height="30"></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+  <h1 class="display-3">Products</h1>
+       <div class="table-container">
+
+           
+           <table class="table table-dark table-striped" >
+               <thead>
+                   <tr>
+                       <th scope="col">Product ID</th>
+                       <th scope="col">Product Name</th>
+                       <th scope="col">Product Quantity</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Category</th>
+            <th scope="col">Image</th>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
+          </tr>
+        </thead>
+    <tbody v-for="item in products" :key="item.prodID">
+    <tr>
+      <!-- <th scope="row"></th> -->
+      <td>{{ item.prodID }}</td>
+      <td>{{ item.prodName }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.amount }}</td>
+      <td>{{ item.category }}</td>
+      <td><img :src="item.prodUrl" width="100px" height="100px"></td>
+      <td><img src="https://i.ibb.co/94g6875/bin.png" alt="Delete" @click="deleteproduct(item.prodID)" width="30" height="30"></td>
       <td><img src="https://i.ibb.co/JxK7ptg/product-design.png" alt="Edit" width="30" height="30" data-bs-toggle="modal" data-bs-target="#editModal"></td>
       
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-  </div>
+    </tr>
+    
+</tbody>
+</table>
+</div>
 </template>
 <script>
   export default {
