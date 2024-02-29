@@ -137,4 +137,3 @@ class Users{
 export {
     Users
 }
-console.log
