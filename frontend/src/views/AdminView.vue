@@ -44,6 +44,7 @@
               <img
                 src="https://i.ibb.co/94g6875/bin.png"
                 alt="Delete"
+                @click.prevent="removeUser(user.userID)"
                 width="30"
                 height="30"
               />
@@ -64,83 +65,27 @@
     </div>
   </div>
   <h1 class="display-3 text-center">Products</h1>
-  <button
-    type="button"
-    class="btn btn-primary"
-    data-bs-toggle="modal"
-    data-bs-target="#addProductModal"
-  >
-    Launch demo modal
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add new product
   </button>
-  <div
-    class="modal fade"
-    id="addProductModal"
-    tabindex="-1"
-    aria-labelledby="addProductModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="addProductModalLabel">
-            Modal title
-          </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <input
-            type="name"
-            class="iput1"
-            placeholder="product name"
-            required
-            v-model="payload.prodName"
-          />
-          <input
-            type="number"
-            class="iput1"
-            placeholder="product quantity"
-            required
-            v-model="payload.quantity"
-          />
-          <input
-            type="number"
-            class="iput1"
-            placeholder="product amount"
-            required
-            v-model="payload.amount"
-          />
-          <input
-            type="text"
-            class="iput1"
-            placeholder="product category"
-            required
-            v-model="payload.category"
-          />
-          <input
-            type="text"
-            class="iput1"
-            placeholder="product image url"
-            required
-            v-model="payload.prodUrl"
-          />
-        </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type ='name' class="iput1" placeholder="product name" required v-model="payload.prodName">
+    <input type ='number' class='iput1' placeholder="product quantity" required v-model="payload.quantity">
+    <input type ='number' class='iput1' placeholder="product amount" required v-model="payload.amount">
+    <input type ='text' class='iput1' placeholder="product category" required v-model="payload.Category">
+            <input type ='text' class='iput1' placeholder="product image url" required v-model="payload.prodUrl">
+          </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button
-          @click.prevent="addProduct"
-          type="button"
-          class="btn btn-primary"
-        >
-          Save changes
-        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button @click="addProduct()" type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -179,7 +124,7 @@
               <img
                 src="https://i.ibb.co/94g6875/bin.png"
                 alt="Delete"
-                @click.prevent="deleteproduct(item.prodID)"
+                @click.prevent="deleteProduct(item.prodID)"
                 width="30"
                 height="30"
               />
@@ -202,52 +147,38 @@
 </template>
 
 <script>
-import addproduct from "@/components/addproduct.vue";
-import updateproduct from "@/components/updateproduct.vue";
-import addUser from "@/components/AddUser.vue";
-import updateUser from "@/components/updateUser.vue";
+
 
 export default {
-  name: "addproduct",
-  components: {
-    addproduct,
-    updateproduct,
-    updateUser,
-    addUser,
-  },
+  
   data() {
     return {
       payload: {
         prodName: null,
         quantity: null,
         amount: null,
-        category: null,
+        Category: null,
         prodUrl: null,
       },
     };
   },
   methods: {
-    deleteproduct(prodID) {
-      this.$store.dispatch("deleteProduct", prodID);
-    },
-    editProducts(prodID) {
-      let edit = {
-        prodID: prodID,
-        prodName: this.prodName,
-        quantity: this.quantity,
-        amount: this.amount,
-        category: this.category,
-        prodUrl: this.prodUrl,
-      };
-      this.$store.dispatch("editProduct", edit);
-    },
-
-    addProduct() {
-      console.log("Product URL:", this.payload.prodUrl);
-      alert(this.payload);
-      this.$store.dispatch("addProduct", this.payload);
-    },
+    deleteProduct(prodID) {
+    this.$store.dispatch("deleteProduct", prodID);
   },
+  removeUser(userID) {
+    this.$store.dispatch("deleteUser", userID);
+  },
+  editProduct(product) {
+    // Dispatch the editProduct action with the product payload
+    this.$store.dispatch("editProduct", product);
+  },
+  addProduct() {
+    console.log("Product URL:", this.payload.prodUrl);
+    alert(this.payload);
+    this.$store.dispatch("addProduct", this.payload);
+  },
+},
   computed: {
     users() {
       return this.$store.state.users;
