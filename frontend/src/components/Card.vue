@@ -1,5 +1,6 @@
 <template>
     <div class="card">
+        
         <div class="card-header">
             <slot name="cardHeader"></slot>
         </div>
@@ -17,5 +18,8 @@
     .card {
         width: 18rem;
         margin: .5rem;
-    }
+        background-color:black;
+        color:white;
+          
+          }
 </style>
