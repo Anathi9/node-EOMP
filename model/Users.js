@@ -102,7 +102,7 @@ class Users{
         FROM Users
         WHERE emailAdd = '${emailAdd}';
         `
-        // console.log
+        
         db.query(qry, async(err, result)=>{
             if(err) throw err 
             if(!result?.length){
