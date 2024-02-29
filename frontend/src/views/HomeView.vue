@@ -1,31 +1,33 @@
 <template>
   
+<div>
 
-
-<div class="viewport">
-    <div class="overlay">
-        <img class="company-logo" src="https://i.ibb.co/NWxwmv5/2-removebg-preview.png" alt="Company Logo">
-        <p class="architects-daughter-regular">YOUR LAST RESORT TO HAVE THAT KASI TASTE</p>
+    
+    <div class="viewport">
+        <div class="overlay">
+            <img class="company-logo" src="https://i.ibb.co/NWxwmv5/2-removebg-preview.png" alt="Company Logo">
+            <p class="architects-daughter-regular">YOUR LAST RESORT TO HAVE THAT KASI TASTE</p>
+        </div>
     </div>
-</div>
-
-<div class="content">
-    <h2 class="display-3 bounce-letters">Welcome to Our Website</h2>
-    <p class="lead">Explore our mouthwatering meals</p>
-    <div class="img-container">
-
-        <img class="img" src="https://i.ibb.co/mJXTTBg/maxresdefault.jpg">
-        <img class="img" src="https://i.ibb.co/fkLH5YC/featured-4.png">
-        <img class="img" src="https://i.ibb.co/tLs0PFH/Traditional-polony-kota.jpg">
-        <img class="img" src="https://i.ibb.co/tLs0PFH/Traditional-polony-kota.jpg">
-        
+    
+    <div class="content">
+        <h2 class="display-3 bounce-letters">Welcome to Our Website</h2>
+        <p class="lead">Explore our mouthwatering meals</p>
+        <div class="img-container">
+            
+            <img class="img" src="https://i.ibb.co/mJXTTBg/maxresdefault.jpg">
+            <img class="img" src="https://i.ibb.co/fkLH5YC/featured-4.png">
+            <img class="img" src="https://i.ibb.co/tLs0PFH/Traditional-polony-kota.jpg">
+            <img class="img" src="https://i.ibb.co/tLs0PFH/Traditional-polony-kota.jpg">
+            
+        </div>
+        <!-- <div>
+            <footer-component></footer-component>
+            
+        </div> -->
     </div>
-    <!-- <div>
-        <footer-component></footer-component>
-
-    </div> -->
+    
 </div>
-
 
 
 
@@ -34,12 +36,12 @@
 </template>
 
     <style scoped>
-        body {
+        /* .body {
             margin: 0;
             padding: 0;
             font-family: sans-serif;
             height: 100vh;
-        }
+        } */
 
         /* .navbar {
             height: 100px;
@@ -77,7 +79,8 @@
   @media only screen and (max-width: 767px) {
     .viewport {
       height: 70vh;
-      width:100% /* Adjust the height for smaller screens */
+      max-width:100%; 
+      margin:0;/* Adjust the height for smaller screens */
     }
   }
         .overlay {
@@ -102,14 +105,18 @@
 
         .architects-daughter-regular {
             font-family: "Architects Daughter", cursive;
-            font-weight: 400;
+            font-weight: 300;
             font-style: oblique;
             font-size: 25px;
         }
 
         .content {
-            padding: 50px;
+            padding: 40px;
             text-align: center;
+        }
+
+        .img-container{
+            width:100%;
         }
 
         
@@ -161,9 +168,11 @@
         /* Media query for larger screens */
         @media (min-width: 768px) {
             .img {
-                width: 330px;
-            height: 330px;
+                width: 300px;
+            height: 300px;
+        
             }
+
         }
         .bounce-letters {
   display: inline-block;
@@ -176,7 +185,7 @@
   }
 }  
 h2{
-    font-family:poppins;
+    font-family:poppins sans-serif;
 }
 
     </style>

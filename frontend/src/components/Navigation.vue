@@ -42,4 +42,9 @@ border-bottom: 3px solid #34dbd8;
 border-top: 3px solid #5534db; 
 border-left: 3px solid rgb(204, 0, 255); 
 }
+@media (min-width: 768px) {
+                .navbar-nav{
+                    margin-right:0;
+                }
+            }
 </style>

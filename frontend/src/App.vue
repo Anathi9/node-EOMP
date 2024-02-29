@@ -1,10 +1,10 @@
 <template>
   <nav-comp></nav-comp>
   
-  <main class="container-fluid">
+  <main >
     <router-view/>
+    <footercomp />
   </main>
-  <footercomp />
   
    
 
@@ -25,6 +25,11 @@
   </script>
 
 <style>
-
+main{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            height: 100vh;
+}
 
 </style>
