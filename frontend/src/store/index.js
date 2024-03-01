@@ -30,26 +30,45 @@ export default createStore({
     },
   },
   actions: {
-    async register(context, payload) {
+    async register({ commit }, newUser) {
       try {
-        let { msg } = (await axios.post(`${lifeURL}users/register`, payload)).data
-        context.dispatch('fetchUsers')
-        sweet({
-          title: 'Registration',
-          text: msg,
-          icon: "success",
-          timer: 2000
-        })
-        router.push({ name: 'login' })
-      } catch (e) {
+
+        let response = await axios.post(`${lifeURL}Users/register`, newUser);
+        window.location.reload();
+
+        if (response.data && response.data.msg) {
+          commit('setUsers', response.data.msg);
+    
+          sweet({
+            title: 'User Registration',
+            text: 'User registered successfully',
+            icon: 'success',
+            timer: 2000,
+          });
+    
+          router.push({ name: 'login' });
+        } else {
+          console.error('Unexpected response structure:', response);
+          sweet({
+            title: 'Error',
+            text: 'Unexpected response from the server',
+            icon: 'error',
+            timer: 2000,
+          });
+        }
+      } catch (error) {
+        console.error('User registration error:', error);
+    
         sweet({
           title: 'Error',
-          text: 'Please try again later',
-          icon: "error",
-          timer: 2000
-        })
+          text: 'Please try again later.',
+          icon: 'error',
+          timer: 2000,
+        });
       }
     },
+    
+    
     async fetchUsers(context) {
       try {
         let { results } = (await axios.get(`${lifeURL}users`)).data
@@ -89,14 +108,21 @@ export default createStore({
     },
     async updateUser(context, payload) {
       try {
-        let { msg } = await (await axios.patch(`${lifeURL}users/update/${payload.id}`, payload.data)).data
-        context.dispatch('fetchUsers')
-        sweet({
-          title: 'Update user',
-          text: msg,
-          icon: "success",
-          timer: 2000
-        })
+
+        let response = await axios.patch(`${lifeURL}users/update/${payload.id}`, payload.data);
+        let { msg } = response.data;
+    
+        if (msg) {
+          context.dispatch('fetchUsers');
+          sweet({
+            title: 'Update user',
+            text: msg,
+            icon: 'success',
+            timer: 2000,
+          });
+    
+        }
+
       } catch (e) {
         sweet({
           title: 'Error',
@@ -125,6 +151,7 @@ export default createStore({
           icon: "error",
           timer: 2000
         })
+
       }
     },
     async login(context, payload) {
@@ -195,20 +222,26 @@ export default createStore({
         })
       }
     },
-    async addProduct(context, payload) {
+    async addProduct({ commit }, newProduct) {
       try {
-        console.log('Adding Product:', payload);
-        const response = await axios.post(`${lifeURL}products/addProduct`, payload);
-        console.log('API Response:', response);
+        let response = await axios.post(`${lifeURL}products/addProduct`, newProduct);
+        window.location.reload();
+
+        console.log('Add Product Response:', response);
     
-        let { msg } = response.data;
-    
-        if (msg) {
-          context.dispatch('fetchProducts');
+        if (response.data && response.data.msg) {
+          commit('setProducts', response.data.msg);
           sweet({
             title: 'Add Product',
-            text: msg,
+            text: 'Product added successfully',
             icon: 'success',
+            timer: 2000,
+          });
+        } else {
+          sweet({
+            title: 'Error',
+            text: 'Unexpected response from the server',
+            icon: 'error',
             timer: 2000,
           });
         }
@@ -222,35 +255,92 @@ export default createStore({
         });
       }
     },
-
-    async editProduct(context, payload) {
+    async updateProduct(context, payload) {
       try {
-        // Make the API call to edit a product
-        let { msg } = (await axios.patch(`${lifeURL}products/update/${payload.id}`, payload.data)).data;
-
+        let { msg } = await (await axios.patch(`${lifeURL}products/update/${payload.id}`)).data;
+    
         if (msg) {
-          // If successful, fetch updated product list
           context.dispatch('fetchProducts');
           sweet({
-            title: 'Edit Product',
+            title: 'Update product',
             text: msg,
             icon: 'success',
             timer: 2000,
           });
+    
+          window.location.reload();
         }
       } catch (e) {
         sweet({
           title: 'Error',
-          text: 'An error occurred when editing a product.',
+          text: 'An error occurred when updating a product.',
           icon: 'error',
           timer: 2000,
         });
       }
     },
+    
+
+    async updateProduct(context, payload) {
+      try {
+        const response = await axios.patch(`${lifeURL}products/update/${payload.id}`, payload.data);
+    
+        if (response.data && response.data.msg) {
+          context.dispatch('fetchProducts');
+          sweet({
+            title: 'Update Product',
+            text: response.data.msg,
+            icon: 'success',
+            timer: 2000,
+          });
+        } else {
+          console.error('Unexpected response structure:', response);
+          sweet({
+            title: 'Error',
+            text: 'Unexpected response from the server',
+            icon: 'error',
+            timer: 2000,
+          });
+        }
+      } catch (error) {
+        console.error('Product update error:', error);
+    
+        sweet({
+          title: 'Error',
+          text: 'An error occurred when updating a product.',
+          icon: 'error',
+          timer: 2000,
+        });
+      }
+    },
+  
+    
+    async getSingleProduct(context, payload) {
+      try {
+        let { result } = (await axios.get(`${lifeURL}products/${payload.id}`)).data
+        if (result) {
+          context.commit('setProduct', result)
+        } else {
+          sweet({
+            title: 'Retrieving a single product',
+            text: 'Product was not found',
+            icon: "info",
+            timer: 2000
+          })
+        }
+      } catch (e) {
+        sweet({
+          title: 'Error',
+          text: 'A product was not found.',
+          icon: "error",
+          timer: 2000
+        })
+      }
+    },
+  
 
     async deleteProduct(context, id) {
       try {
-        // Make the API call to delete a product
         let { msg } = (await axios.delete(`${lifeURL}products/delete/${id}`)).data;
 
         if (msg) {
@@ -273,6 +363,7 @@ export default createStore({
       }
     },
   },
+
   modules: {}
 })
 
