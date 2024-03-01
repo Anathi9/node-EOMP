@@ -1,5 +1,5 @@
 <template>
-    <h1 class="display-5 text-center">Get in touch</h1>
+    <h1 class="display-5 text-center">Get in touch with us</h1>
     <div class="container">
       <div class="row">
         <div class="col-md-6 p-5">
