@@ -74,4 +74,3 @@ class Products{
 export {
     Products
 }
-//console.log(await updateProduct(1,'uluso'))
