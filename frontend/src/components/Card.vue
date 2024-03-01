@@ -22,4 +22,18 @@
         color:white;
           
           }
+
+          @media (max-width: 768px) {
+    .card-img-top {
+      width: 100%; /* Make the image responsive within its container */
+      height: auto; /* Maintain the aspect ratio */
+    }
+.card{
+    width:15rem;
+    margin-left:8%;
+}
+    .card-text {
+      font-size: 14px; /* Adjust the font size for better readability on smaller screens */
+    }
+  }
 </style>

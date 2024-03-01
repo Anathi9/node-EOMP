@@ -13,7 +13,7 @@
     <p class="architects-daughter-regular">Indulge in the rich flavors of our heritage! Savor the taste of homemade goodness with our traditional food.Your ticket to a delicious cultural experience!</p>
 </section>
 
-<!-- Mission Section -->
+
 <section class="mission-section">
     <div class="mission-info">
         <h2>Our Mission</h2>
@@ -36,7 +36,7 @@
       <div class="col">
 
   <div class="card" style="width: 16rem;">
-    <img src="https://i.ibb.co/Z8T7k2B/20240112-071025.jpg" class="card-img-top" alt="ceo">
+    <img src="https://i.ibb.co/Z8T7k2B/20240112-071025.jpg" class="card-img-top" alt="ceo" width="250px" height="250px">
     <div class="card-body">
       <p class="card-text">Siyamthanda Tsobo-CEO</p>
 </div>
@@ -45,7 +45,7 @@
 <div class="col">
 
   <div class="card" style="width: 16rem;">
-    <img src="https://i.ibb.co/Z8T7k2B/20240112-071025.jpg" class="card-img-top" alt="ceo">
+    <img src="https://i.ibb.co/Xtmv9wS/DSC-0316.jpg" class="card-img-top" alt="ceo" width="250px" height="250px">
     <div class="card-body">
       <p class="card-text">Anathi Josefu-CEO</p>
 </div>
@@ -54,9 +54,9 @@
 <div class="col">
 
   <div class="card" style="width: 16rem;">
-    <img src="https://i.ibb.co/Z8T7k2B/20240112-071025.jpg" class="card-img-top" alt="ceo">
+    <img src="https://i.ibb.co/vBqFSn5/funder.jpg" class="card-img-top" alt="ceo" width="250px" height="250px">
     <div class="card-body">
-      <p class="card-text">Pravin Gordon-Funder</p>
+      <p class="card-text">Cyril Ramaphosa-Funder</p>
     </div>
   </div>
 </div>
@@ -68,7 +68,7 @@
 <style scoped>
 .about-section {
             position: relative;
-            height: 500px; /* Adjust the height as needed */
+            height: 500px; 
             background-image: url('https://i.ibb.co/y40YZzH/south-african-food-boerewors-jpg.webp" alt="south-african-food-boerewors-jpg'); /* Replace with your background image URL */
             background-size: cover;
             background-position: center;
@@ -125,10 +125,9 @@
 
        
 
-        /* Media query for smaller screens */
         @media (max-width: 768px) {
             .about-section {
-                height: 300px; /* Adjust height for smaller screens */
+                height: 300px; 
             }
 
             .mission-section {

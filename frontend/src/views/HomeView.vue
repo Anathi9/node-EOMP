@@ -1,6 +1,7 @@
 <template>
-  
-<div>
+    
+    <Spinner v-if="loading"/>
+    <div class="something" v-else>
 
     
     <div class="viewport">
@@ -18,35 +19,23 @@
             <img class="img" src="https://i.ibb.co/mJXTTBg/maxresdefault.jpg">
             <img class="img" src="https://i.ibb.co/fkLH5YC/featured-4.png">
             <img class="img" src="https://i.ibb.co/tLs0PFH/Traditional-polony-kota.jpg">
-            <img class="img" src="https://i.ibb.co/tLs0PFH/Traditional-polony-kota.jpg">
+            <img class="img" src="https://i.ibb.co/xMKH3Rx/Chicken-Heart-Yakitori.jpg">
             
         </div>
-        <!-- <div>
-            <footer-component></footer-component>
-            
-        </div> -->
+        
     </div>
     
 </div>
 
 
 
-
+<div>
+</div>
 
 </template>
 
     <style scoped>
-        /* .body {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-            height: 100vh;
-        } */
-
-        /* .navbar {
-            height: 100px;
-        } */
-
+       
         .navbar-brand {
             padding-top: 20px;
             line-height: 1.5;
@@ -80,7 +69,7 @@
     .viewport {
       height: 70vh;
       max-width:100%; 
-      margin:0;/* Adjust the height for smaller screens */
+      margin:0;
     }
   }
         .overlay {
@@ -165,7 +154,6 @@
             }
         }
 
-        /* Media query for larger screens */
         @media (min-width: 768px) {
             .img {
                 width: 300px;
@@ -189,3 +177,25 @@ h2{
 }
 
     </style>
+
+
+
+<script>
+import Spinner from '@/components/Spinner.vue';
+export default {
+components:{
+  Spinner
+},
+data() {
+          return{
+              loading:true,
+          };
+         },
+         mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 2000);
+  },
+}
+
+</script>

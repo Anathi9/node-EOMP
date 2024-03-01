@@ -9,6 +9,7 @@
         </div>
       </div>
       <div class="row">
+        
         <template v-if="filteredProducts && filteredProducts.length">
           <Card v-for="product in filteredProducts" :key="product.prodID">
             <template #cardHeader>
@@ -18,8 +19,7 @@
               <p class="card-text lead p-2">{{ product.prodName }}</p>
               <p class="card-text">Quantity: {{ product.quantity }}</p>
               <p class="card-text">Amount: R{{ product.amount }}</p>
-              <router-link :to="{ name: 'product', params: { id: product.prodID }}" class="btn btn-dark">View More</router-link>
-            </template>
+              <router-link @click="getProduct(product.prodID)" :to="{ name: 'product', params: { prodID: product.prodID }}" class="btn btn-dark">view more</router-link>            </template>
           </Card>
         </template>
         <template v-else>
@@ -59,6 +59,9 @@
         if (this.products) {
           this.products.sort((a, b) => a.amount - b.amount);
         }
+      },
+      getProduct(prodID){
+        this.$store.dispatch('getSingleProduct',prodID)
       }
     },
     mounted() {
@@ -68,6 +71,16 @@
   </script>
   
   <style scoped>
-  /* Add any additional styling if needed */
+ 
+  @media (max-width: 768px) {
+    .card-img-top {
+      width: 100%; 
+      height: auto; 
+    }
+
+    .card-text {
+      font-size: 14px; 
+    }
+  }
   </style>
   
