@@ -145,7 +145,7 @@
               <img
                 src="https://i.ibb.co/94g6875/bin.png"
                 alt="Delete"
-                @click.prevent="deleteProduct(item.prodID)"
+                @click.prevent="deleteproduct(item.prodID)"
                 width="30"
                 height="30"
               />
@@ -272,10 +272,10 @@ export default {
   this.$store.dispatch("register", this.userPayload);
 },
 
-    deleteUser(userID) {
-      this.$store.dispatch("deleteUser", { id: userID });
-    },
-  }, 
+deleteUser(userID) {
+      this.$store.dispatch("deleteUser", userID);
+    }
+}, 
 
   
 

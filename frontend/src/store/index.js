@@ -33,7 +33,7 @@ export default createStore({
     async register({ commit }, newUser) {
       try {
 
-        let response = await axios.post(`${lifeURL}Users/register`, newUser);
+        let response = await axios.post(`${lifeURL}users/register`, newUser);
         window.location.reload();
 
         if (response.data && response.data.msg) {
@@ -134,24 +134,25 @@ export default createStore({
     },
     async deleteUser(context, id) {
       try {
-        let { msg } = await (await axios.delete(`${lifeURL}users/${id}`)).data
+        let { msg } = (await axios.delete(`${lifeURL}users/delete/${id}`)).data;
+
         if (msg) {
-          context.dispatch('fetchUsers')
+          // If successful, fetch updated product list
+          context.dispatch('fetchUsers');
           sweet({
-            title: 'Delete user',
+            title: 'Delete User',
             text: msg,
-            icon: "success",
-            timer: 2000
-          })
+            icon: 'success',
+            timer: 2000,
+          });
         }
       } catch (e) {
         sweet({
           title: 'Error',
           text: 'An error occurred when deleting a user.',
-          icon: "error",
-          timer: 2000
-        })
-
+          icon: 'error',
+          timer: 2000,
+        });
       }
     },
     async login(context, payload) {
