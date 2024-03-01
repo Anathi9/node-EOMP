@@ -1,4 +1,5 @@
 <template>
+
     <h1 class="display-3 text-center">Users</h1>
    
     
@@ -79,6 +80,7 @@
             </tr>
           </tbody>
         </table>
+
       </div>
     </div>
   
@@ -143,7 +145,7 @@
               <img
                 src="https://i.ibb.co/94g6875/bin.png"
                 alt="Delete"
-                @click.prevent="deleteproduct(item.prodID)"
+                @click.prevent="deleteProduct(item.prodID)"
                 width="30"
                 height="30"
               />
@@ -168,8 +170,10 @@
 
 
 
+
 <script>
 export default {
+
     data() {
   return {
     payload: {
@@ -272,6 +276,9 @@ export default {
       this.$store.dispatch("deleteUser", { id: userID });
     },
   }, 
+
+  
+
   computed: {
     users() {
       return this.$store.state.users;
